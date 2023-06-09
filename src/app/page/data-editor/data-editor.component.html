@@ -1,0 +1,107 @@
+<div class="row d-flex justify-content-center align-items-center">
+  <button [routerLink]="['/newproduct']" class="btn btn-success m-3">
+    Add movie
+  </button>
+
+  <select class="form-select" [(ngModel)]="filterKey" style="height: 2.5rem">
+    <option value="">Please select!</option>
+    <option *ngFor="let options of movieForFilterKeys" [value]="options.key">
+      {{ options.title }}
+    </option>
+  </select>
+
+  <input
+    [hidden]="!filterKey"
+    [(ngModel)]="phrase"
+    type="text"
+    class="form-control w-25 input-sm"
+  />
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <table class="table">
+      <thead>
+        <th>
+          <button (click)="getSortProp('id')" class="btn btn-secondary">
+            ID <i class="fa fa-sort"></i>
+          </button>
+        </th>
+        <th>
+          <button (click)="getSortProp('name')" class="btn btn-secondary">
+            Name <i class="fa fa-sort"></i>
+          </button>
+        </th>
+        <th>
+          <button (click)="getSortProp('catId')" class="btn btn-secondary">
+            Category <i class="fa fa-sort"></i>
+          </button>
+        </th>
+        <th>
+          <button
+            (click)="getSortProp('description')"
+            class="btn btn-secondary"
+          >
+            Description <i class="fa fa-sort"></i>
+          </button>
+        </th>
+        <th>
+          <button (click)="getSortProp('price')" class="btn btn-secondary">
+            Price <i class="fa fa-sort"></i>
+          </button>
+        </th>
+        <th>
+          <button (click)="getSortProp('stock')" class="btn btn-secondary">
+            Stock <i class="fa fa-sort"></i>
+          </button>
+        </th>
+        <th>
+          <button (click)="getSortProp('featured')" class="btn btn-secondary">
+            Featured <i class="fa fa-sort"></i>
+          </button>
+        </th>
+        <th>
+          <button (click)="getSortProp('active')" class="btn btn-secondary">
+            Active <i class="fa fa-sort"></i>
+          </button>
+        </th>
+        <th>
+          <button style="cursor: auto" class="btn btn-secondary">
+            Actions
+          </button>
+        </th>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let product of productList$
+              | async
+              | universalsearch: filterKey:phrase
+              | universalpipe: fieldName:direction
+          "
+        >
+          <td>{{ product.id }}</td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.catId | catId }}</td>
+          <td>{{ product.description }}</td>
+          <td>{{ product.price }}</td>
+          <td>{{ product.stock }}</td>
+          <td>{{ product.featured }}</td>
+          <td>{{ product.active }}</td>
+          <td>
+            <div class="btn-group">
+              <button
+                [routerLink]="['/newproduct/', product.id]"
+                class="btn btn-info fa fa-pencil"
+              ></button>
+              <button
+                (click)="deleteBtn(product)"
+                class="btn btn-danger fa fa-trash"
+              ></button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

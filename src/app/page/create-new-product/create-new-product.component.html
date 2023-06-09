@@ -1,0 +1,133 @@
+<div class="row">
+  <div class="col-6 offset-3">
+    <form (ngSubmit)="onSubmit(product)" #productForm="ngForm" *ngIf="product$">
+      <div class="form-group">
+        <label class="labels" for="Name">Title</label>
+        <input
+          name="name"
+          id="Name"
+          [(ngModel)]="product.name"
+          type="text"
+          class="form-control"
+          required
+          #productName="ngModel"
+        />
+        <div
+          [hidden]="productName.valid || productName.pristine"
+          class="error-feedback active-featured"
+        >
+          Add movie title!
+        </div>
+      </div>
+      <div class="form-group my-2">
+        <label class="labels" for="Category">Category</label>
+        <select
+          name="catId"
+          id="Category"
+          [(ngModel)]="product.catId"
+          type="text"
+          class="form-control"
+          required
+          #catId="ngModel"
+        >
+          <option *ngFor="let cat of catList" [value]="cat.key">
+            {{ cat.title }}
+          </option>
+        </select>
+        <div
+          [hidden]="catId.valid || catId.pristine"
+          class="error-feedback active-featured"
+        >
+          Please define the category of the movie!
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="labels" for="description">Description</label>
+        <input
+          name="description"
+          type="text"
+          id="description"
+          [(ngModel)]="product.description"
+          class="form-control"
+        />
+      </div>
+      <div class="form-group">
+        <label class="labels" for="price">Price</label>
+        <input
+          name="price"
+          id="price"
+          [(ngModel)]="product.price"
+          class="form-control"
+          #productPrice="ngModel"
+          required
+          pattern="[0-9]{1,3}"
+        />
+        <div
+          [hidden]="productPrice.valid || productPrice.pristine"
+          class="error-feedback active-featured"
+        >
+          Please define the movie's price!
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="labels" for="stock">Stock</label>
+        <input
+          name="stock"
+          id="stock"
+          [(ngModel)]="product.stock"
+          class="form-control"
+          #productStock="ngModel"
+          required
+          pattern="[0-9]{1,3}"
+        />
+        <div
+          [hidden]="productStock.valid || productStock.pristine"
+          class="error-feedback active-featured"
+        >
+          Please define how many of this movie you have in stock! (0-999)
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="labels" for="featured">Featured</label>
+        <select
+          name="featured"
+          [(ngModel)]="product.featured"
+          type="text"
+          class="form-control"
+          required
+          #productFeatured="ngModel"
+        >
+          <option>True</option>
+          <option>False</option>
+        </select>
+        <div class="error-feedback active-featured">
+          I would like this movie to the fetured!
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="labels" for="active">Active</label>
+        <select
+          name="active"
+          [(ngModel)]="product.active"
+          type="text"
+          class="form-control"
+          required
+          #productActive="ngModel"
+        >
+          <option>True</option>
+          <option>False</option>
+        </select>
+        <div class="error-feedback active-featured">
+          I would like this movie to have 50% discount!
+        </div>
+      </div>
+      <button
+        [disabled]="!productForm.form.valid"
+        type="submit"
+        class="btn btn-success my-5"
+      >
+        Submit!
+      </button>
+    </form>
+  </div>
+</div>

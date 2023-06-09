@@ -1,0 +1,26 @@
+<div class="row d-flex justify-content-center">
+  <app-product-card
+    *ngFor="let product of productList"
+    [product]="product"
+  ></app-product-card>
+</div>
+
+<div class="row">
+  <nav class="mx-auto" aria-label="Page navigation">
+    <ul class="pagination">
+      <li class="page-item" (click)="prevPage()">
+        <p class="page-link" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </p>
+      </li>
+      <li *ngFor="let page of allPage" class="page-item" (click)="onPage(page)">
+        <p class="page-link" href="#">{{ page }}</p>
+      </li>
+      <li class="page-item" (click)="nextPage()">
+        <p class="page-link" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </p>
+      </li>
+    </ul>
+  </nav>
+</div>

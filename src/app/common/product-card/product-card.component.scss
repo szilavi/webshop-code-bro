@@ -1,0 +1,71 @@
+:root {
+  --bcgrey: rgb(36, 36, 39);
+  --bcsand: rgb(233, 163, 103);
+  --bcsandy: rgb(223, 191, 163);
+  --bcsandlight: rgb(255, 197, 147);
+  --bcred: rgb(233, 0, 7);
+  --bcblue: rgb(97, 221, 223);
+  --bcwhite: rgba(255, 255, 255, 0.795);
+}
+
+.movieCard {
+  border: 2px solid var(--bcsandy) !important;
+  width: 15rem;
+  cursor: pointer;
+  user-select: none;
+}
+.hr {
+  border: 1px solid var(--bcsandy);
+}
+
+.imageContainer {
+  height: 14rem;
+  background-color: black;
+  & img {
+    width: 50%;
+  }
+}
+
+.card-body {
+  background-color: black;
+
+  & .card-title {
+    font-weight: bolder;
+    font-size: 1.5rem;
+    color: var(--bcsandlight);
+    text-align: center;
+  }
+
+  & .movieGenre {
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--bcblue);
+  }
+
+  & .movieDesc {
+    color: var(--bcwhite);
+    text-align: justify;
+  }
+
+  & .movieStock {
+    color: var(--bcblue);
+  }
+
+  & .stock {
+    color: var(--bcwhite);
+  }
+
+  & .moviePrice {
+    text-align: center;
+    font-size: 1.8rem;
+    font-style: italic;
+    color: var(--bcsandlight);
+    height: 45px;
+  }
+}
+
+.card:hover {
+  position: relative;
+  top: -5px;
+  box-shadow: 0 0 20px 3px var(--bcblue);
+}

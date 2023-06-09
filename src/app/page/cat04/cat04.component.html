@@ -1,0 +1,41 @@
+<span class="featuredTitle pl-3">Featured Romantic Movies:</span>
+<hr class="redhr" />
+<div class="row d-flex justify-content-center my-3">
+  <app-product-card
+    *ngFor="let movies of romanticMovies$ | async | filterFive"
+    [product]="movies"
+  ></app-product-card>
+</div>
+<hr class="redhr" />
+
+<span class="featuredTitle pl-3">All Romantic Movies:</span>
+
+
+<div class="d-flex justify-content-center align-items-center my-3">
+  <select [(ngModel)]="filterKey" class="form-select bg-dark text-white" style="height: 2.5rem">
+    <option value="">Filter</option>
+    <option *ngFor="let options of movieForFilterKeys" [value]="options.key">
+      {{ options.title }}
+    </option>
+  </select>
+
+  <input
+    [hidden]="!filterKey"
+    [(ngModel)]="phrase"
+    type="text"
+    class="form-control w-25"
+    style="height: 2.5rem bg-dark text-white"
+  />
+</div>
+
+
+
+
+<div class="row d-flex justify-content-center">
+  <app-product-card
+    *ngFor="
+      let movies of romanticMovies$ | async | universalsearch: filterKey:phrase
+    "
+    [product]="movies"
+  ></app-product-card>
+</div>

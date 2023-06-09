@@ -1,0 +1,40 @@
+<div
+  class="container-fluid d-flex justify-content-center align-items-center py-5"
+  style="background-color: rgba(0, 132, 134, 1)"
+>
+  <div class="row">
+    <div class="d-flex flex-column justify-content-center align-items-center">
+      <p class="brand">BroCode's Movie Library</p>
+      <p class="retro">📽GET THE BEST MOVIES ONLINE!📽</p>
+      <p class="browse">
+        Browse among Featured and Discounted movies in 5 genres!
+      </p>
+      <p>🎬 🎞 🎬 🎞 🎬 🎞 🎬 🎞 🎬</p>
+      <p>🎞 🎬 🎞 🎬 🎞</p>
+      <p>🍿</p>
+    </div>
+  </div>
+</div>
+
+<span class="featuredTitle pl-3 mt-3">Featured Movies:</span>
+<hr class="redhr" />
+<div class="row d-flex justify-content-center my-3">
+  <app-product-card
+    *ngFor="let movie of movieList$ | async | filterFive"
+    [product]="movie"
+  ></app-product-card>
+</div>
+<hr class="redhr" />
+
+<span class="allTitle pl-3">Discounted Movies:</span>
+<hr class="bluehr" />
+<div class="row d-flex justify-content-center my-3">
+  <app-product-card
+    *ngFor="let movie of discountedMovieList$ | async | filterFive"
+    [product]="movie"
+  ></app-product-card>
+</div>
+<hr class="bluehr" />
+
+<span class="allTitle pl-3">All Movies:</span>
+<app-product-list></app-product-list>

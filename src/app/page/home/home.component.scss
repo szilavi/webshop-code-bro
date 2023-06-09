@@ -1,0 +1,60 @@
+@font-face {
+  font-family: "Retrolight";
+  src: url("../../../assets/fonts/Retrolight.otf");
+}
+@font-face {
+  font-family: "Refik";
+  src: url("../../../assets/fonts/Refik.ttf");
+}
+@font-face {
+  font-family: "RefikBook";
+  src: url("../../../assets/fonts/RefikBook.ttf");
+}
+
+.brand {
+  font-family: "Retrolight";
+  font-size: 5rem;
+  color: var(--bcsandlight);
+  text-align: center;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  user-select: none;
+}
+
+.retro {
+  font-family: "Refik";
+  font-size: 3.5rem;
+  text-align: center;
+  color: black;
+  font-style: italic;
+  user-select: none;
+}
+
+.featuredTitle {
+  font-size: 2rem;
+  color: var(--bcblue);
+}
+.featuredContainer {
+  border: 2px solid var(--bcred);
+}
+
+.discountedTitle {
+  font-size: 2rem;
+  color: var(--bcred);
+}
+.discountedContainer {
+  border: 2px solid var(--bcblue);
+}
+
+.allTitle {
+  font-size: 2rem;
+  color: var(--bcsandlight);
+}
+
+.browse {
+  color: var(--bcsandlight);
+}
+
+.bluehr {
+  border: 2px solid var(--bcblue);
+}
